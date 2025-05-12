@@ -14,3 +14,23 @@
       <p>Текст</p>
   </li>
 */
+
+
+import { storage} from './js/localStorageApi';
+import { addMarkup } from './js/renderTasks';
+import { taskTemplate } from './js/markup-tasks';
+import { formInput, ul, themeChang } from './js/refs';
+import { removeTodo, onSubmit } from './js/tasks';
+import { changeTheme } from './js/theme-switcher';
+
+
+
+if(storage() !== null){
+  addMarkup(storage().map(taskTemplate).join(''))
+}
+
+formInput.addEventListener('submit', onSubmit);
+ul.addEventListener('click', removeTodo);
+
+themeChang.addEventListener('click', changeTheme);
+
